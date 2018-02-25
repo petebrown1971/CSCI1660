@@ -1,54 +1,60 @@
 package com.petebrown.week4;
 
-//import java.util.*;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Hashtable;
 
-class HashMapPutExample {
+
+class Main {
 
     public static void main(String[] args) {
-        Hashtable<String, ArrayList<Double>> names = new Hashtable<>();
+        HashMap<String, String> hashmap = new HashMap<>();
         String name = "";
-        ArrayList<Double> temp = new ArrayList<>();
+        String temperatures;
 
         try (Scanner in = new Scanner(System.in)) {
-            while (true) {
+            while (!name.equals("end")) {
                 System.out.println("Enter City:");
                 name = in.next();
-                if (name.equals("end")) {
-                    break;
-                }
+                if (name.equals("end")) break;
 
-                Scanner input = new Scanner(System.in);
-                double[] avg = new double[5];
-
-                for (int i = 0; i < avg.length; i++) {
-                    System.out.println("Please enter an average daily temperature:");
-                    avg[i] = input.nextDouble();
-
-                }
-
-
+                System.out.println("Please enter 5 average daily temperatures with a comma between each:");
+                temperatures = in.next();
+                hashmap.put(name, temperatures);
             }
         }
-    }
- private static double average(ArrayList <Integer> temp) {
-         //Calculate the summation of the elements in the list
-            long sum = 0;
-         double n = temp.size();
-        for (double i = 0; i < n; i++)
-          sum += temp.get(i);
-        return ((double) sum) / n;
+        display(hashmap);
 
-        // print the hashtable data
-        System.out.println("Hashtable:");
-        {
-           for (String name : name.keySet())
-            System.out.println("Key" + name + "value" + n);
-        }
     }
-}
+
+
+    public static void display(HashMap<String, String> average) {
+        for (String key : average.keySet()) {
+            System.out.println("City: " + key);
+            int sum = 0;
+
+            for (String temps : average.get(key).split(",")) {
+                    Integer n = Integer.parseInt(temps);
+                    sum += n;}
+
+                System.out.println("The Average is: " + sum / 5);  // print the result.
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
